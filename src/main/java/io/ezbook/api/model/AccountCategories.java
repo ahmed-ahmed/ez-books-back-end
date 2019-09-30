@@ -1,4 +1,4 @@
-package io.ezbooks.api.model;
+package io.ezbook.api.model;
 
 import javax.persistence.Basic;
 import javax.persistence.Column;
