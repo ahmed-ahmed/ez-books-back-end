@@ -21,6 +21,13 @@ public class JournalController {
     public List<Journal> findAll() {
         return journalService.findAll();
     }
+    
+    @GetMapping(path = "/addJournal")
+    public void addJournal() {
+    	Journal journal = new Journal();
+    	journal.setId(1111111L);
+        journalService.addJournal(journal);
+    }
 
 	
 }
