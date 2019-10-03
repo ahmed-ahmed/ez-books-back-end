@@ -21,7 +21,7 @@ public class AccountType implements java.io.Serializable {
 	private long id;
 	private String name;
 	private boolean type;
-	private Set<AccountCategories> accountCategorieses = new HashSet<AccountCategories>(0);
+	private Set<AccountCategory> accountCategorieses = new HashSet<AccountCategory>(0);
 
 	public AccountType() {
 	}
@@ -32,7 +32,7 @@ public class AccountType implements java.io.Serializable {
 		this.type = type;
 	}
 
-	public AccountType(long id, String name, boolean type, Set<AccountCategories> accountCategorieses) {
+	public AccountType(long id, String name, boolean type, Set<AccountCategory> accountCategorieses) {
 		this.id = id;
 		this.name = name;
 		this.type = type;
@@ -69,11 +69,11 @@ public class AccountType implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "accountType")
-	public Set<AccountCategories> getAccountCategorieses() {
+	public Set<AccountCategory> getAccountCategorieses() {
 		return this.accountCategorieses;
 	}
 
-	public void setAccountCategorieses(Set<AccountCategories> accountCategorieses) {
+	public void setAccountCategorieses(Set<AccountCategory> accountCategorieses) {
 		this.accountCategorieses = accountCategorieses;
 	}
 
