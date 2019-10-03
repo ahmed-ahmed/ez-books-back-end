@@ -5,10 +5,9 @@ import java.util.List;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import io.ezbook.api.model.Journal;
+import io.ezbook.api.model.Account;
 
 @Repository
-public interface JournalRepo extends CrudRepository<Journal	, Long> {
-    
-	List<Journal> findAll();
+public interface AccountRepository extends CrudRepository<Account, Long> {
+    List<Account> findAll();
 }

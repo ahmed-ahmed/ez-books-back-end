@@ -7,7 +7,7 @@ import org.springframework.jms.core.JmsTemplate;
 import org.springframework.stereotype.Service;
 
 import io.ezbook.api.model.Journal;
-import io.ezbook.api.repo.JournalRepo;
+import io.ezbook.api.repo.JournalRepository;
 
 import static io.ezbook.api.configuration.ActiveMQConfig.JOURNAL_QUEUE;;
 
@@ -18,7 +18,7 @@ public class JournalService {
 	private JmsTemplate jmsTemplate;
 
 	@Autowired
-	private JournalRepo journalRepo;
+	private JournalRepository journalRepo;
 
 	public List<Journal> findAll() {
 		return journalRepo.findAll();

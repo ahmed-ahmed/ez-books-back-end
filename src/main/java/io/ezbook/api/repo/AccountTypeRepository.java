@@ -8,6 +8,6 @@ import org.springframework.stereotype.Repository;
 import io.ezbook.api.model.AccountType;
 
 @Repository
-public interface AccountTypeRepo extends CrudRepository<AccountType, Long> {
+public interface AccountTypeRepository extends CrudRepository<AccountType, Long> {
     List<AccountType> findAll();
 }
