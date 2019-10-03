@@ -1,15 +1,35 @@
 --
+-- TOC entry 3841 (class 0 OID 14651287)
+-- Data for Name: role; Type: TABLE DATA; Schema: public; Owner: -
+--
+INSERT INTO "role" ("id", "role_name", "description") VALUES (1, 'STANDARD_USER', 'Standard User - Has no admin rights');
+INSERT INTO "role" ("id", "role_name", "description") VALUES (2, 'ADMIN_USER', 'Admin User - Has permission to perform admin tasks');
+
+--
+-- TOC entry 3842 (class 0 OID 14651287)
+-- Data for Name: user; Type: TABLE DATA; Schema: public; Owner: -
+--
+INSERT INTO "user" ("id", "first_name", "last_name", "password", "username") VALUES (1, 'User', 'Test', 'password', 'user');
+INSERT INTO "user" ("id", "first_name", "last_name", "password", "username") VALUES (2, 'Admin', 'Admin', 'password', 'admin');
+
+--
+-- TOC entry 3843 (class 0 OID 14651287)
+-- Data for Name: user_role; Type: TABLE DATA; Schema: public; Owner: -
+--
+INSERT INTO "user_role" ("user_id", "role_id") VALUES(1,1);
+INSERT INTO "user_role" ("user_id", "role_id") VALUES(2,1);
+INSERT INTO "user_role" ("user_id", "role_id") VALUES(2,2);
+
+--
 -- TOC entry 3852 (class 0 OID 14651210)
 -- Dependencies: 198
 -- Data for Name: account_type; Type: TABLE DATA; Schema: public; Owner: -
 --
-
 INSERT INTO "account_type" ("id", "name", "type") VALUES (2, 'Liabilties', true);
 INSERT INTO "account_type" ("id", "name", "type") VALUES (1, 'Assets', false);
 INSERT INTO "account_type" ("id", "name", "type") VALUES (3, 'Equity', false);
 INSERT INTO "account_type" ("id", "name", "type") VALUES (4, 'Income ', true);
 INSERT INTO "account_type" ("id", "name", "type") VALUES (5, 'Expense', true);
-
 
 --
 -- TOC entry 3851 (class 0 OID 14651207)

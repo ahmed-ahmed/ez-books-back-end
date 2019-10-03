@@ -1,6 +1,7 @@
 package io.ezbook.api.configuration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.jms.annotation.EnableJms;
 import org.springframework.jms.config.DefaultJmsListenerContainerFactory;
 import org.springframework.jms.config.JmsListenerContainerFactory;
@@ -10,6 +11,7 @@ import org.springframework.jms.support.converter.MessageType;
 
 @EnableJms
 @Configuration
+@PropertySource({"classpath:jms.properties"})
 public class ActiveMQConfig {
 
     public static final String JOURNAL_QUEUE = "journal-queue";
