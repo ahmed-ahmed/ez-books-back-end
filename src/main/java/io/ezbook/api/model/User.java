@@ -31,6 +31,10 @@ public class User implements java.io.Serializable {
 	private String lastName;
 	private List<Role> roles;
 
+	public User() {
+		
+	}
+	
 	public User(long id) {
 		this.id = id;
 	}

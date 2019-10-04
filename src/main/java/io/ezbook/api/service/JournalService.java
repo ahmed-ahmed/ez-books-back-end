@@ -7,7 +7,7 @@ import org.springframework.jms.core.JmsTemplate;
 import org.springframework.stereotype.Service;
 
 import io.ezbook.api.model.Journal;
-import io.ezbook.api.repo.JournalRepository;
+import io.ezbook.api.repository.JournalRepository;
 
 import static io.ezbook.api.configuration.ActiveMQConfig.JOURNAL_QUEUE;;
 

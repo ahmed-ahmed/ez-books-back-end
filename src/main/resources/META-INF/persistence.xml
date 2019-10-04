@@ -6,6 +6,12 @@
 
     <persistence-unit name="EzBookPU">
         <class>io.ezbook.api.model.Account</class>
+        <class>io.ezbook.api.model.AccountCategory</class>
+        <class>io.ezbook.api.model.AccountType</class>
+        <class>io.ezbook.api.model.Role</class>
+        <class>io.ezbook.api.model.User</class>
+        <class>io.ezbook.api.model.Journal</class>
+        <class>io.ezbook.api.model.JournalDetail</class>
         <properties>
             <property name="toplink.jdbc.url" value="jdbc:postgresql://localhost:5432/ezbook"/>
             <property name="toplink.jdbc.driver" value="org.postgresql.Driver"/>

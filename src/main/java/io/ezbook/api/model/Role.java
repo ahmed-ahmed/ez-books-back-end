@@ -20,6 +20,10 @@ public class Role implements java.io.Serializable {
 	private String roleName;
 	private String description;
 
+	public Role() {
+		
+	}
+	
 	public Role(long id) {
 		this.id = id;
 	}

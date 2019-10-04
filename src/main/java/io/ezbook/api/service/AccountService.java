@@ -7,8 +7,8 @@ import org.springframework.stereotype.Service;
 
 import io.ezbook.api.model.Account;
 import io.ezbook.api.model.AccountType;
-import io.ezbook.api.repo.AccountRepository;
-import io.ezbook.api.repo.AccountTypeRepository;
+import io.ezbook.api.repository.AccountRepository;
+import io.ezbook.api.repository.AccountTypeRepository;
 
 @Service
 public class AccountService {

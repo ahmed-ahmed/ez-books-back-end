@@ -1,4 +1,4 @@
-package io.ezbook.api.repo;
+package io.ezbook.api.repository;
 
 import java.util.List;
 
