@@ -11,6 +11,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import lombok.ToString;
 
 
@@ -57,6 +59,7 @@ public class JournalDetail implements java.io.Serializable {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "journalId")
+	@JsonBackReference
 	public Journal getJournal() {
 		return this.journal;
 	}

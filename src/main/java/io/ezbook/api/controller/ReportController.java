@@ -41,4 +41,29 @@ public class ReportController {
 		
 	}
 	
+	@GetMapping(path = "balanceSheet")
+	public Map<String, Map<String,Set<Account>>> getBalanaceSheetReport(){
+		
+		Map<String,Map<String,Set<Account>>> balanceSheetReport = new HashMap<>();
+		Map<String,Set<Account>> accountByCategoryMap = new HashMap<>();
+		
+		List<AccountType> accountTypes = accountService.findAccountByType("Assets","Liabilties", "Equity");
+		
+		for(AccountType type : accountTypes) {
+			accountByCategoryMap = new HashMap<>();
+			for(AccountCategory category: type.getAccountCategorieses()) {
+				accountByCategoryMap.put(category.getName(), category.getAccounts());
+			}
+			balanceSheetReport.put(type.getName(),  accountByCategoryMap);
+		}
+		return balanceSheetReport;
+	}
+	
+	
+	@GetMapping(path = "generalLedger")
+	public List<Account> getGeneralLedgerReport(){
+		return accountService.findAll();
+	}
+	
+	
 }

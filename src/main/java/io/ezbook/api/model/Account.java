@@ -83,7 +83,7 @@ public class Account implements java.io.Serializable {
 	}
 
 	@Column(name = "debtBalance")
-	@JsonProperty("debit")
+	@JsonProperty("debt")
 	public BigDecimal getDebtBalance() {
 		return this.debtBalance;
 	}

@@ -14,6 +14,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import lombok.ToString;
 
 
@@ -66,6 +68,7 @@ public class Journal implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "journal")
+	@JsonManagedReference
 	public Set<JournalDetail> getJournalDetails() {
 		return this.journalDetails;
 	}

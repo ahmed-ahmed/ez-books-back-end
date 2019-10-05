@@ -19,12 +19,12 @@ public class JournalController {
 	@Autowired
 	private JournalService journalService;
 
-    @GetMapping(path = "getAll")
+    @GetMapping
     public List<Journal> findAll() {
         return journalService.findAll();
     }
     
-    @PostMapping(path = "/addJournal")
+    @PostMapping
     public void addJournal(@RequestBody Journal journal) {
         journalService.addJournal(journal);
     }

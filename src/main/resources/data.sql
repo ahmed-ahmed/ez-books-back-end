@@ -68,3 +68,18 @@ INSERT INTO "account" ("id", "name", "creditBalance", "debtBalance", "totalBalan
 INSERT INTO "account" ("id", "name", "creditBalance", "debtBalance", "totalBalance", "accountCategoryId") VALUES (15, 'Product Sales', 0, 0, 0, 6);
 INSERT INTO "account" ("id", "name", "creditBalance", "debtBalance", "totalBalance", "accountCategoryId") VALUES (16, 'Other Income', 0, 0, 0, 6);
 INSERT INTO "account" ("id", "name", "creditBalance", "debtBalance", "totalBalance", "accountCategoryId") VALUES (17, 'Preferred Stock', 0, 0, 0, 5);
+
+--
+-- TOC entry 3854 (class 0 OID 14651287)
+-- Dependencies: 197
+-- Data for Name: journal; Type: TABLE DATA; Schema: public; Owner: -
+--
+INSERT INTO "journal" ("id", "date" ) VALUES (1, CURRENT_TIMESTAMP());
+
+
+--
+-- TOC entry 3855 (class 0 OID 14651287)
+-- Dependencies: 197
+-- Data for Name: journal_detail; Type: TABLE DATA; Schema: public; Owner: -
+--
+INSERT INTO "journal_detail" ("id", "debt", "credit", "accountId", "journalId" ) VALUES (1, 100, 100, 1, 1);

@@ -1,5 +1,6 @@
 package io.ezbook.api.service;
 
+import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,5 +26,9 @@ public class AccountService {
 
 	public List<AccountType> findAllAccountTypes(){
 		return accountTypeRepository.findAll();
+	}
+	
+	public List<AccountType> findAccountByType(String... accountTypes){
+		return accountTypeRepository.findByNameIn(Arrays.asList(accountTypes));
 	}
 }
