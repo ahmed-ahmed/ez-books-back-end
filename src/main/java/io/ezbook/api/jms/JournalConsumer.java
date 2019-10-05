@@ -37,8 +37,8 @@ public class JournalConsumer {
 			long accountId = detail.getAccountId();
 			Account account = accountRepository.findById(accountId).get();
 			
-			account.getCreditBalance().add(detail.getCredit());
-			account.getDebtBalance().add(detail.getDebt());
+			account.setCreditBalance(account.getCreditBalance().add(detail.getCredit()));
+			account.setDebtBalance(account.getDebtBalance().add(detail.getDebt()));
 			
 			accountRepository.save(account);
 		}
