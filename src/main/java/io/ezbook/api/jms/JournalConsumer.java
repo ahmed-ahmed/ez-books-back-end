@@ -15,6 +15,7 @@ import org.springframework.stereotype.Component;
 import io.ezbook.api.model.Account;
 import io.ezbook.api.model.Journal;
 import io.ezbook.api.model.JournalDetail;
+import io.ezbook.api.model.JournalStatus;
 import io.ezbook.api.repository.AccountRepository;
 import io.ezbook.api.repository.JournalRepository;
 
@@ -42,6 +43,7 @@ public class JournalConsumer {
 			
 			accountRepository.save(account);
 		}
+		journal.setStatus(JournalStatus.PUBLISHED);
 		journalRepository.save(journal);
 		
 	}

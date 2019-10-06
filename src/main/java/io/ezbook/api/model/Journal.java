@@ -8,6 +8,8 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -33,9 +35,13 @@ public class Journal implements java.io.Serializable {
 	private static final long serialVersionUID = 1714010091805070070L;
 	private long id;
 	private Date date;
+	private JournalStatus status;
+	private String notes;
+	
 	private Set<JournalDetail> journalDetails = new HashSet<JournalDetail>(0);
 
 	public Journal() {
+		this.status = JournalStatus.DRAFT;
 	}
 
 	public Journal(long id, Date date) {
@@ -43,10 +49,11 @@ public class Journal implements java.io.Serializable {
 		this.date = date;
 	}
 
-	public Journal(long id, Date date, Set<JournalDetail> journalDetails) {
+	public Journal(long id, Date date, Set<JournalDetail> journalDetails, JournalStatus journalStatus) {
 		this.id = id;
 		this.date = date;
 		this.journalDetails = journalDetails;
+		this.status = journalStatus;
 	}
 
 	@Id
@@ -80,4 +87,23 @@ public class Journal implements java.io.Serializable {
 		this.journalDetails = journalDetails;
 	}
 
+	@Enumerated(EnumType.ORDINAL)
+	public JournalStatus getStatus() {
+		return status;
+	}
+
+	public void setStatus(JournalStatus status) {
+		this.status = status;
+	}
+
+	@Column(name = "notes")
+	public String getNotes() {
+		return notes;
+	}
+
+	public void setNotes(String notes) {
+		this.notes = notes;
+	}
+	
+	
 }

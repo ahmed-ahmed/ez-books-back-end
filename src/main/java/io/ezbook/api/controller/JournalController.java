@@ -22,7 +22,7 @@ public class JournalController {
     }
 
     @PostMapping
-    public void addJournal(@RequestBody Journal journal) {
-        journalService.addJournal(journal);
+    public Journal addJournal(@RequestBody Journal journal) {
+        return journalService.addJournal(journal);
     }
 }

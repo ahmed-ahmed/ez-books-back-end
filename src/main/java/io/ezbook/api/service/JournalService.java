@@ -18,14 +18,16 @@ public class JournalService {
 	private JmsTemplate jmsTemplate;
 
 	@Autowired
-	private JournalRepository journalRepo;
+	private JournalRepository journalRepository;
 
 	public List<Journal> findAll() {
-		return journalRepo.findAll();
+		return journalRepository.findAll();
 	}
 	
-	public void addJournal(Journal journal) {
-		jmsTemplate.convertAndSend(JOURNAL_QUEUE, journal);
+	public Journal addJournal(Journal journal) {
+		Journal journalResponse = journalRepository.save(journal);
+		jmsTemplate.convertAndSend(JOURNAL_QUEUE, journalResponse);
+		return journalResponse;
 	}
 
 }
