@@ -12,6 +12,7 @@ import org.springframework.stereotype.Component;
 
 import io.ezbook.api.model.User;
 import io.ezbook.api.service.UserService;
+import io.ezbook.api.util.SecurityConstants;
 
 @Component
 public class TenantTokenEnhancer implements TokenEnhancer {
@@ -28,7 +29,7 @@ public class TenantTokenEnhancer implements TokenEnhancer {
 		User user = userService.getUserByUsername(username);
 		if (user != null) {
 			Map<String, Object> additionalInfo = new HashMap<>();
-			additionalInfo.put("tenantId", authentication.getName() + ":" + user.getTenantId());
+			additionalInfo.put(SecurityConstants.JWT_TENANT_ID_HEADER, authentication.getName() + ":" + user.getTenantId());
 			((DefaultOAuth2AccessToken) accessToken).setAdditionalInformation(additionalInfo);
 		}
 		return accessToken;
