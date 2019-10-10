@@ -2,15 +2,15 @@
 -- TOC entry 3841 (class 0 OID 14651287)
 -- Data for Name: role; Type: TABLE DATA; Schema: public; Owner: -
 --
-INSERT INTO "role" ("id", "role_name", "description") VALUES (1, 'STANDARD_USER', 'Standard User - Has no admin rights');
-INSERT INTO "role" ("id", "role_name", "description") VALUES (2, 'ADMIN_USER', 'Admin User - Has permission to perform admin tasks');
+INSERT INTO "role" ("id", "role_name", "description") VALUES (1, 'ROLE_STANDARD_USER', 'Standard User - Has no admin rights');
+INSERT INTO "role" ("id", "role_name", "description") VALUES (2, 'ROLE_ADMIN_USER', 'Admin User - Has permission to perform admin tasks');
 
 --
 -- TOC entry 3842 (class 0 OID 14651287)
 -- Data for Name: user; Type: TABLE DATA; Schema: public; Owner: -
 --
-INSERT INTO "user" ("id", "first_name", "last_name", "password", "username") VALUES (1, 'User', 'Test', 'password', 'user');
-INSERT INTO "user" ("id", "first_name", "last_name", "password", "username") VALUES (2, 'Admin', 'Admin', 'password', 'admin');
+INSERT INTO "user" ("id", "first_name", "last_name", "password", "username", "tenant_id") VALUES (1, 'User', 'User', '{bcrypt}$2a$09$T6t3qjpZqXXiLoP/1Lv9UOESra9QJp9VVPRm5XY8f3Lxoo4gcsMwS', 'user', 'heFkczhQo');
+INSERT INTO "user" ("id", "first_name", "last_name", "password", "username", "tenant_id") VALUES (2, 'Admin', 'Admin', '{bcrypt}$2a$09$6NQhK6rkbcjqg5tL4offo.Rf66M9XDJ.qPxN/BRjEH4MEWT420oP6', 'admin', 'YmikjEwxA');
 
 --
 -- TOC entry 3843 (class 0 OID 14651287)
