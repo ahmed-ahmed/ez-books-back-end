@@ -1,8 +1,6 @@
 package io.ezbook.api.model;
 import java.util.List;
-import javax.xml.bind.annotation.XmlRootElement;
  
-@XmlRootElement(name = "error")
 public class ErrorResponse
 {
 	public ErrorResponse() {

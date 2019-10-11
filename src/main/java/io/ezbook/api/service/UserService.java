@@ -10,10 +10,12 @@ import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import io.ezbook.api.exception.UserAlreadyExistsException;
 import io.ezbook.api.model.ClientUser;
 import io.ezbook.api.model.User;
 import io.ezbook.api.repository.RoleRepository;
 import io.ezbook.api.repository.UserRepository;
+import io.ezbook.api.util.SecurityConstants;
 
 @Service
 public class UserService {
@@ -29,12 +31,18 @@ public class UserService {
 	
 	private PasswordEncoder encoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
 	
+	
 	public User getUserByUsername(String username) {
 		return userRepository.findByUsername(username);
 	}
 	
 	@Transactional
     public User createUser(ClientUser user) {
+		// Check if username already exits
+		User dbUser = userRepository.findByUsername(user.getUsername());
+		if (dbUser != null) {
+			throw new UserAlreadyExistsException("The username already exists!");
+		}
 		User entity = new User();
 		entity.setUsername(user.getUsername());
 		entity.setFirstName(user.getFirstName());
@@ -42,9 +50,9 @@ public class UserService {
 		
         String encodedPassword = encoder.encode(user.getPassword());
         entity.setPassword(encodedPassword);
-        String tenantId = RandomStringUtils.randomAlphabetic(10);
+        String tenantId = RandomStringUtils.randomAlphanumeric(12);
         entity.setTenantId(tenantId);
-        entity.setRoles(Arrays.asList(roleRepository.findByRoleName("ROLE_STANDARD_USER")));
+        entity.setRoles(Arrays.asList(roleRepository.findByRoleName(SecurityConstants.STANDARD_ROLE)));
         User saved = userRepository.save(entity);
         tenantService.initDatabase(tenantId);
         return saved;
