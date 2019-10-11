@@ -29,7 +29,7 @@ public class TenantTokenEnhancer implements TokenEnhancer {
 		User user = userService.getUserByUsername(username);
 		if (user != null) {
 			Map<String, Object> additionalInfo = new HashMap<>();
-			additionalInfo.put(SecurityConstants.JWT_TENANT_ID_HEADER, authentication.getName() + ":" + user.getTenantId());
+			additionalInfo.put(SecurityConstants.JWT_TENANT_ID_HEADER, user.getTenantId());
 			((DefaultOAuth2AccessToken) accessToken).setAdditionalInformation(additionalInfo);
 		}
 		return accessToken;

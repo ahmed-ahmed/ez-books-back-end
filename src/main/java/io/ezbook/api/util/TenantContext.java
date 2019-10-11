@@ -1,13 +1,13 @@
 package io.ezbook.api.util;
 
 public class TenantContext {
-	private static ThreadLocal<Object> currentTenant = new ThreadLocal<>();
+	private static ThreadLocal<String> currentTenant = new ThreadLocal<>();
 
-	public static void setCurrentTenant(Object tenant) {
+	public static void setCurrentTenant(String tenant) {
 		currentTenant.set(tenant);
 	}
 
-	public static Object getCurrentTenant() {
+	public static String getCurrentTenant() {
 		return currentTenant.get();
 	}
 	

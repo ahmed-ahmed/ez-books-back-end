@@ -9,8 +9,8 @@ INSERT INTO "role" ("id", "role_name", "description") VALUES (2, 'ROLE_ADMIN_USE
 -- TOC entry 3842 (class 0 OID 14651287)
 -- Data for Name: user; Type: TABLE DATA; Schema: public; Owner: -
 --
-INSERT INTO "user" ("id", "first_name", "last_name", "password", "username", "tenant_id") VALUES (1, 'User', 'User', '{bcrypt}$2a$09$T6t3qjpZqXXiLoP/1Lv9UOESra9QJp9VVPRm5XY8f3Lxoo4gcsMwS', 'user', 'heFkczhQo');
-INSERT INTO "user" ("id", "first_name", "last_name", "password", "username", "tenant_id") VALUES (2, 'Admin', 'Admin', '{bcrypt}$2a$09$6NQhK6rkbcjqg5tL4offo.Rf66M9XDJ.qPxN/BRjEH4MEWT420oP6', 'admin', 'YmikjEwxA');
+INSERT INTO "user" ("id", "first_name", "last_name", "password", "username", "tenant_id") VALUES (1, 'User', 'User', '{bcrypt}$2a$09$T6t3qjpZqXXiLoP/1Lv9UOESra9QJp9VVPRm5XY8f3Lxoo4gcsMwS', 'user', 'PUBLIC');
+INSERT INTO "user" ("id", "first_name", "last_name", "password", "username", "tenant_id") VALUES (2, 'Admin', 'Admin', '{bcrypt}$2a$09$6NQhK6rkbcjqg5tL4offo.Rf66M9XDJ.qPxN/BRjEH4MEWT420oP6', 'admin', 'PUBLIC');
 
 --
 -- TOC entry 3843 (class 0 OID 14651287)
