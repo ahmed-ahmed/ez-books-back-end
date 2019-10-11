@@ -22,6 +22,7 @@ public class AccountController {
 	private AccountService accountService;
 
     @GetMapping
+    @LogExecutionTime
     public List<Account> findAll() {
         return accountService.findAll();
     }

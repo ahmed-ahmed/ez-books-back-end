@@ -36,9 +36,11 @@ public class TenantConnectionProvider implements MultiTenantConnectionProvider {
 		final Connection connection = getAnyConnection();
 		try {
 			if (tenantIdentifier != null) {
-				connection.createStatement().execute("USE " + tenantIdentifier);
+				connection.createStatement().execute(String.format("SET SCHEMA \"%s\";", tenantIdentifier));
+				// connection.createStatement().execute("USE " + tenantIdentifier);
 			} else {
-				connection.createStatement().execute("USE " + SchemaResolver.DEFAULT_SCHEMA);
+				connection.createStatement().execute(String.format("SET SCHEMA \"%s\";", SchemaResolver.DEFAULT_SCHEMA));
+				//connection.createStatement().execute("USE " + SchemaResolver.DEFAULT_SCHEMA);
 			}
 		} catch (SQLException e) {
 			throw new HibernateException("Problem setting schema to " + tenantIdentifier, e);
@@ -49,9 +51,10 @@ public class TenantConnectionProvider implements MultiTenantConnectionProvider {
 	@Override
 	public void releaseConnection(String tenantIdentifier, Connection connection) throws SQLException {
 		try {
-			connection.createStatement().execute("USE " + SchemaResolver.DEFAULT_SCHEMA);
+			connection.createStatement().execute(String.format("SET SCHEMA \"%s\";", SchemaResolver.DEFAULT_SCHEMA));
+			//connection.createStatement().execute("USE " + SchemaResolver.DEFAULT_SCHEMA);
 		} catch (SQLException e) {
-			throw new HibernateException("Problem setting schema to " + tenantIdentifier, e);
+			throw new HibernateException("Problem reverting schema to " + SchemaResolver.DEFAULT_SCHEMA, e);
 		}
 		connection.close();
 	}
