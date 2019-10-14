@@ -27,4 +27,4 @@ INSERT INTO "account_category" ("id", "name", "accountTypeId") VALUES (7, 'All E
 -- Dependencies: 197
 -- Data for Name: account; Type: TABLE DATA; Schema: public; Owner: -
 --
-INSERT INTO "account" ("id", "name", "creditBalance", "debtBalance", "totalBalance", "accountCategoryId") VALUES (1, 'Cash', 0, 0, 0, 1);
+INSERT INTO "account" ("id", "name", "creditBalance", "debtBalance", "isUserDefined", "accountCategoryId") VALUES (1, 'Cash', 0, 0, 0, 1);

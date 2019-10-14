@@ -1,4 +1,4 @@
-package io.ezbook.api.model;
+package io.ezbook.api.entity;
 
 public class ClientUser implements java.io.Serializable {
 

@@ -1,20 +1,20 @@
-package io.ezbook.api.model;
+package io.ezbook.api.entity;
 import java.util.List;
- 
+
 public class ErrorResponse
 {
 	public ErrorResponse() {
-		
+
 	}
-	
+
     public ErrorResponse(String message, List<String> details) {
         super();
         this.message = message;
         this.details = details;
     }
- 
+
     private String message;
- 
+
     private List<String> details;
 
 	public String getMessage() {

@@ -11,7 +11,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 
-import io.ezbook.api.model.User;
+import io.ezbook.api.entity.User;
 import io.ezbook.api.repository.UserRepository;
 
 @Component

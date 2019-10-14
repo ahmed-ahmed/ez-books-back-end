@@ -1,4 +1,4 @@
-package io.ezbook.api.model;
+package io.ezbook.api.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -23,9 +23,9 @@ public class Role implements java.io.Serializable {
 	private String description;
 
 	public Role() {
-		
+
 	}
-	
+
 	public Role(long id) {
 		this.id = id;
 	}

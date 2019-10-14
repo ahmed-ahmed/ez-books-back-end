@@ -1,4 +1,4 @@
-package io.ezbook.api.model;
+package io.ezbook.api.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -57,7 +57,7 @@ public class Product implements java.io.Serializable {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
+
 	@Column(name = "price")
 	public double getPrice() {
 		return price;

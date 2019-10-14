@@ -1,4 +1,4 @@
-package io.ezbook.api.model;
+package io.ezbook.api.entity;
 // Generated Sep 30, 2019 11:02:40 PM by Hibernate Tools 5.0.6.Final
 
 import java.math.BigDecimal;
@@ -28,9 +28,9 @@ public class JournalDetail implements java.io.Serializable {
 
 	private static final long serialVersionUID = -4808758304212711781L;
 	private long id;
-	private Journal journal;
-	private BigDecimal debt;
-	private BigDecimal credit;
+	private JournalEntity journalEntity;
+	private double debt;
+	private double credit;
 	private Long accountId;
 
 	public JournalDetail() {
@@ -40,9 +40,9 @@ public class JournalDetail implements java.io.Serializable {
 		this.id = id;
 	}
 
-	public JournalDetail(long id, Journal journal, BigDecimal debt, BigDecimal credit, Long accountId) {
+	public JournalDetail(long id, JournalEntity journalEntity, double debt, double credit, Long accountId) {
 		this.id = id;
-		this.journal = journal;
+		this.journalEntity = journalEntity;
 		this.debt = debt;
 		this.credit = credit;
 		this.accountId = accountId;
@@ -62,29 +62,29 @@ public class JournalDetail implements java.io.Serializable {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "journalId")
 	@JsonBackReference
-	public Journal getJournal() {
-		return this.journal;
+	public JournalEntity getJournalEntity() {
+		return this.journalEntity;
 	}
 
-	public void setJournal(Journal journal) {
-		this.journal = journal;
+	public void setJournalEntity(JournalEntity journalEntity) {
+		this.journalEntity = journalEntity;
 	}
 
 	@Column(name = "debt", precision = 131089, scale = 0)
-	public BigDecimal getDebt() {
+	public double getDebt() {
 		return this.debt;
 	}
 
-	public void setDebt(BigDecimal debt) {
+	public void setDebt(double debt) {
 		this.debt = debt;
 	}
 
 	@Column(name = "credit", precision = 131089, scale = 0)
-	public BigDecimal getCredit() {
+	public double getCredit() {
 		return this.credit;
 	}
 
-	public void setCredit(BigDecimal credit) {
+	public void setCredit(double credit) {
 		this.credit = credit;
 	}
 

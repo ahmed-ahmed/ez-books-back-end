@@ -10,7 +10,7 @@ import org.springframework.security.oauth2.provider.OAuth2Authentication;
 import org.springframework.security.oauth2.provider.token.TokenEnhancer;
 import org.springframework.stereotype.Component;
 
-import io.ezbook.api.model.User;
+import io.ezbook.api.entity.User;
 import io.ezbook.api.service.UserService;
 import io.ezbook.api.util.SecurityConstants;
 

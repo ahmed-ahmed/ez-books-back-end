@@ -20,8 +20,8 @@ import io.ezbook.api.ApiApplication;
 
 @Configuration
 public class HibernateConfig {
-	
-	
+
+
 	@Bean
 	public JpaVendorAdapter jpaVendorAdapter() {
 		return new HibernateJpaVendorAdapter();

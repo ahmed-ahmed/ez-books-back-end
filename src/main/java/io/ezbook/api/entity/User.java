@@ -1,4 +1,4 @@
-package io.ezbook.api.model;
+package io.ezbook.api.entity;
 
 import java.util.List;
 
@@ -35,9 +35,9 @@ public class User implements java.io.Serializable {
 	private List<Role> roles;
 
 	public User() {
-		
+
 	}
-	
+
 	public User(long id) {
 		this.id = id;
 	}

@@ -1,4 +1,4 @@
-package io.ezbook.api.model;
+package io.ezbook.api.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -24,15 +24,15 @@ public class Customer implements java.io.Serializable {
 	private String company;
 	private String phoneNumber;
 	private String emailAddress;
-	
-	
+
+
 	public Customer() {
 	}
 
 	public Customer(long id) {
 		this.id = id;
 	}
-	
+
 
 	public Customer(long id, String name, String address, String company, String phoneNumber, String emailAddress) {
 		super();
@@ -55,7 +55,7 @@ public class Customer implements java.io.Serializable {
 	public void setId(long id) {
 		this.id = id;
 	}
-	
+
 	@Column(name = "name")
 	public String getName() {
 		return name;

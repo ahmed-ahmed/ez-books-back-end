@@ -11,8 +11,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import io.ezbook.api.exception.UserAlreadyExistsException;
-import io.ezbook.api.model.ClientUser;
-import io.ezbook.api.model.User;
+import io.ezbook.api.entity.ClientUser;
+import io.ezbook.api.entity.User;
 import io.ezbook.api.repository.RoleRepository;
 import io.ezbook.api.repository.UserRepository;
 import io.ezbook.api.util.SecurityConstants;
@@ -22,20 +22,20 @@ public class UserService {
 
 	@Autowired
 	private UserRepository userRepository;
-	
+
 	@Autowired
 	private RoleRepository roleRepository;
-	
+
 	@Autowired
 	private TenantService tenantService;
-	
+
 	private PasswordEncoder encoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
-	
-	
+
+
 	public User getUserByUsername(String username) {
 		return userRepository.findByUsername(username);
 	}
-	
+
 	@Transactional
     public User createUser(ClientUser user) {
 		// Check if username already exits
@@ -47,7 +47,7 @@ public class UserService {
 		entity.setUsername(user.getUsername());
 		entity.setFirstName(user.getFirstName());
 		entity.setLastName(user.getLastName());
-		
+
         String encodedPassword = encoder.encode(user.getPassword());
         entity.setPassword(encodedPassword);
         String tenantId = RandomStringUtils.randomAlphanumeric(12);
