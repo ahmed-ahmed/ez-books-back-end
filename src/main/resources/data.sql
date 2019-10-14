@@ -49,22 +49,34 @@ INSERT INTO "PUBLIC"."role" ("role_name", "description") VALUES ('ROLE_STANDARD_
 -- -- Dependencies: 197
 -- -- Data for Name: account; Type: TABLE DATA; Schema: public; Owner: -
 -- --
-INSERT INTO "account" ("id", "accountType", "creditBalance", "debtBalance", "name", "isUserDefined", "parentId" ) VALUES (1, 0, 0, 0, 'Fixed Asset', 0, null);
-INSERT INTO "account" ("id", "accountType", "creditBalance", "debtBalance", "name", "isUserDefined", "parentId" ) VALUES (2, 0, 0, 0, 'Other Asset', 0, null);
-INSERT INTO "account" ("id", "accountType", "creditBalance", "debtBalance", "name", "isUserDefined", "parentId" ) VALUES (3, 0, 0, 0, 'Other Current Asset', 0, null);
-INSERT INTO "account" ("id", "accountType", "creditBalance", "debtBalance", "name", "isUserDefined", "parentId" ) VALUES (4, 0, 0, 0, 'Cash', 0, null);
-INSERT INTO "account" ("id", "accountType", "creditBalance", "debtBalance", "name", "isUserDefined", "parentId" ) VALUES (5, 0, 0, 0, 'Bank', 0, null);
-INSERT INTO "account" ("id", "accountType", "creditBalance", "debtBalance", "name", "isUserDefined", "parentId" ) VALUES (6, 0, 0, 0, 'Stock', 0, null);
+delete from "account";
+INSERT INTO "account" ("id", "accountType", "creditBalance", "debtBalance", "name", "isUserDefined", "isCategoryAccount", "parentId" ) VALUES (1, 0, 0, 0, 'Fixed Asset', 0, 1, null);
+INSERT INTO "account" ("id", "accountType", "creditBalance", "debtBalance", "name", "isUserDefined", "isCategoryAccount", "parentId" ) VALUES (2, 0, 0, 0, 'Other Asset', 0, 1, null);
+INSERT INTO "account" ("id", "accountType", "creditBalance", "debtBalance", "name", "isUserDefined", "isCategoryAccount", "parentId" ) VALUES (3, 0, 0, 0, 'Other Current Asset', 0, 1, null);
+INSERT INTO "account" ("id", "accountType", "creditBalance", "debtBalance", "name", "isUserDefined", "isCategoryAccount", "parentId" ) VALUES (4, 0, 0, 0, 'Cash', 0, 1, null);
+INSERT INTO "account" ("id", "accountType", "creditBalance", "debtBalance", "name", "isUserDefined", "isCategoryAccount", "parentId" ) VALUES (5, 0, 0, 0, 'Bank', 0, 1, null);
+INSERT INTO "account" ("id", "accountType", "creditBalance", "debtBalance", "name", "isUserDefined", "isCategoryAccount", "parentId" ) VALUES (6, 0, 0, 0, 'Stock', 0, 1, null);
+INSERT INTO "account" ("id", "accountType", "creditBalance", "debtBalance", "name", "isUserDefined", "isCategoryAccount", "parentId" ) VALUES (7, 1, 0, 0, 'Credit Card', 0, 1, null);
+INSERT INTO "account" ("id", "accountType", "creditBalance", "debtBalance", "name", "isUserDefined", "isCategoryAccount", "parentId" ) VALUES (8, 1, 0, 0, 'Long Term Liability', 0, 1, null);
+INSERT INTO "account" ("id", "accountType", "creditBalance", "debtBalance", "name", "isUserDefined", "isCategoryAccount", "parentId" ) VALUES (9, 1, 0, 0, 'Other Liability', 0, 1, null);
+INSERT INTO "account" ("id", "accountType", "creditBalance", "debtBalance", "name", "isUserDefined", "isCategoryAccount", "parentId" ) VALUES (10, 2, 0, 0, 'Equity', 0, 1, null);
+
+INSERT INTO "account" ("id", "accountType", "creditBalance", "debtBalance", "name", "isUserDefined", "isCategoryAccount", "parentId" ) VALUES (11, 0, 0, 0,'Advance Tax',		0, 0, 3);
+INSERT INTO "account" ("id", "accountType", "creditBalance", "debtBalance", "name", "isUserDefined", "isCategoryAccount", "parentId" ) VALUES (12, 0, 0, 0,'Prepaid Expenses',		0, 0, 3);
+INSERT INTO "account" ("id", "accountType", "creditBalance", "debtBalance", "name", "isUserDefined", "isCategoryAccount", "parentId" ) VALUES (13, 0, 0, 0,'Employee Advance',		0, 0, 3);
+INSERT INTO "account" ("id", "accountType", "creditBalance", "debtBalance", "name", "isUserDefined", "isCategoryAccount", "parentId" ) VALUES (14, 0, 0, 0,'Undeposited Funds',		0, 0, 4);
+INSERT INTO "account" ("id", "accountType", "creditBalance", "debtBalance", "name", "isUserDefined", "isCategoryAccount", "parentId" ) VALUES (15, 0, 0, 0,'Petty Cash',		0, 0, 4);
+INSERT INTO "account" ("id", "accountType", "creditBalance", "debtBalance", "name", "isUserDefined", "isCategoryAccount", "parentId" ) VALUES (16, 0, 0, 0,'Chase Bank',		0, 0, 5);
+INSERT INTO "account" ("id", "accountType", "creditBalance", "debtBalance", "name", "isUserDefined", "isCategoryAccount", "parentId" ) VALUES (17, 0, 0, 0,'Accounts Receivable',		0, 0, 6);
+INSERT INTO "account" ("id", "accountType", "creditBalance", "debtBalance", "name", "isUserDefined", "isCategoryAccount", "parentId" ) VALUES (18, 0, 0, 0,'Furniture, and Equipment',		0, 0, 9);
+INSERT INTO "account" ("id", "accountType", "creditBalance", "debtBalance", "name", "isUserDefined", "isCategoryAccount", "parentId" ) VALUES (19, 0, 0, 0,'Tax Payable',		0, 0, 10);
+INSERT INTO "account" ("id", "accountType", "creditBalance", "debtBalance", "name", "isUserDefined", "isCategoryAccount", "parentId" ) VALUES (20, 0, 0, 0,'Unearned Revenue',		0, 0, 10);
+INSERT INTO "account" ("id", "accountType", "creditBalance", "debtBalance", "name", "isUserDefined", "isCategoryAccount", "parentId" ) VALUES (21, 0, 0, 0, 'Opening, Balance Adjustments',		0, 0, 10);
+INSERT INTO "account" ("id", "accountType", "creditBalance", "debtBalance", "name", "isUserDefined", "isCategoryAccount", "parentId" ) VALUES (22, 0, 0, 0,'Employee Reimbursements',		0, 0, 10);
 
 
-INSERT INTO "account" ("id", "accountType", "creditBalance", "debtBalance", "name", "isUserDefined", "parentId" ) VALUES (7, 1, 0, 0, 'Credit Card', 0, null);
-INSERT INTO "account" ("id", "accountType", "creditBalance", "debtBalance", "name", "isUserDefined", "parentId" ) VALUES (8, 1, 0, 0, 'Long Term Liability', 0, null);
-INSERT INTO "account" ("id", "accountType", "creditBalance", "debtBalance", "name", "isUserDefined", "parentId" ) VALUES (9, 1, 0, 0, 'Other Liability', 0, null);
 
-INSERT INTO "account" ("id", "accountType", "creditBalance", "debtBalance", "name", "isUserDefined", "parentId" ) VALUES (10, 2, 0, 0, 'Equity', 0, null);
-
-
-INSERT INTO "account" ("id", "accountType", "creditBalance", "debtBalance", "name", "isUserDefined", "parentId" ) VALUES (10, 2, 0, 0, 'Equity', 0, null);
+-- INSERT INTO "account" ("id", "accountType", "creditBalance", "debtBalance", "name", "isUserDefined", "parentId" ) VALUES (10, 2, 0, 0, 'Equity', 0, null);
 
 
 -- {

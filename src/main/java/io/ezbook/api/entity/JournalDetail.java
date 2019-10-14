@@ -3,6 +3,7 @@ package io.ezbook.api.entity;
 
 import java.math.BigDecimal;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -11,6 +12,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
@@ -31,7 +34,9 @@ public class JournalDetail implements java.io.Serializable {
 	private JournalEntity journalEntity;
 	private double debt;
 	private double credit;
-	private Long accountId;
+//	private Long accountId;
+
+	private Account account;
 
 	public JournalDetail() {
 	}
@@ -40,12 +45,12 @@ public class JournalDetail implements java.io.Serializable {
 		this.id = id;
 	}
 
-	public JournalDetail(long id, JournalEntity journalEntity, double debt, double credit, Long accountId) {
+	public JournalDetail(long id, JournalEntity journalEntity, double debt, double credit) {
 		this.id = id;
 		this.journalEntity = journalEntity;
 		this.debt = debt;
 		this.credit = credit;
-		this.accountId = accountId;
+//		this.accountId = accountId;
 	}
 
 	@Id
@@ -88,13 +93,22 @@ public class JournalDetail implements java.io.Serializable {
 		this.credit = credit;
 	}
 
-	@Column(name = "accountId")
-	public Long getAccountId() {
-		return this.accountId;
+//	@Column(name = "accountId")
+//	public Long getAccountId() {
+//		return this.accountId;
+//	}
+//
+//	public void setAccountId(Long accountId) {
+//		this.accountId = accountId;
+//	}
+
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "accountId", referencedColumnName = "id")
+	public Account getAccount() {
+		return account;
 	}
 
-	public void setAccountId(Long accountId) {
-		this.accountId = accountId;
+	public void setAccount(Account account) {
+		this.account = account;
 	}
-
 }

@@ -29,6 +29,8 @@ public class Account implements java.io.Serializable {
 	private Account parentAccount;
 	private List<Account> children;
 
+	private boolean isCategoryAccount;
+
 	private AccountType accountType;
 
 	public Account() {
@@ -98,10 +100,18 @@ public class Account implements java.io.Serializable {
 		isUserDefined = userDefined;
 	}
 
+	@Column(name = "isCategoryAccount")
+	@JsonProperty("isCategoryAccount")
+	public boolean isCategoryAccount() {
+		return isCategoryAccount;
+	}
 
-	@ManyToOne
+	public void setCategoryAccount(boolean categoryAccount) {
+		isCategoryAccount = categoryAccount;
+	}
+
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "parentId")
-//	@JsonManagedReference
 	@JsonIgnore
 	public Account getParentAccount() {
 		return parentAccount;
@@ -111,8 +121,8 @@ public class Account implements java.io.Serializable {
 		this.parentAccount = parentAccount;
 	}
 
-	@OneToMany(mappedBy="parentAccount")
-//	@JsonBackReference
+	@OneToMany(mappedBy="parentAccount", fetch = FetchType.LAZY)
+	@JsonIgnore
 	public List<Account> getChildren() {
 		return children;
 	}

@@ -2,7 +2,10 @@ package io.ezbook.api.service;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
+import io.ezbook.api.model.AccountBalance;
+import io.ezbook.api.model.ChartOfAccount;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import io.ezbook.api.entity.Account;
@@ -25,14 +28,28 @@ public class AccountService extends AbstractService<Account>{
 		return accountRepository.save(account);
 	}
 
-	public List<Account> findAll() {
-		return accountRepository.findAll();
+//	public List<Account> findAll() {
+//		return accountRepository.findAll();
+//	}
+
+	public List<Account> getAccountTypes() {
+		return accountRepository.findAccountByCategoryAccountIsTrue();
+	}
+
+	public List<ChartOfAccount> findLeafAccounts() {
+		return accountRepository.getLeadAccounts();
+	}
+
+	public List<AccountBalance> getAccountBalances() {
+		return accountRepository.getAccountBalances();
 	}
 
 	@Override
 	public CrudRepository getRepo() {
 		return accountRepository;
 	}
+
+
 
 
 //	public List<AccountType> findAllAccountTypes(){

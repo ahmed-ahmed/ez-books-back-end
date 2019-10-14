@@ -1,13 +1,25 @@
 package io.ezbook.api.repository;
 
-import java.util.List;
-
+import io.ezbook.api.entity.Account;
+import io.ezbook.api.model.AccountBalance;
+import io.ezbook.api.model.ChartOfAccount;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import io.ezbook.api.entity.Account;
+import java.util.List;
 
 @Repository
 public interface AccountRepository extends CrudRepository<Account, Long> {
-    List<Account> findAll();
+    List<Account> findAccountByCategoryAccountIsTrue();
+
+    @Query("select new io.ezbook.api.model.ChartOfAccount(id, name, parentAccount.name) from Account")
+    List<ChartOfAccount> getLeadAccounts();
+
+    @Query("select new io.ezbook.api.model.AccountBalance(j.account.id, j.account.name, sum(j.debt), sum(j.credit), j.account.accountType) " +
+            "from JournalDetail j " +
+            "GROUP BY j.account.id"
+    )
+    List<AccountBalance> getAccountBalances();
+
 }

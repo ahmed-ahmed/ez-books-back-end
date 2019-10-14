@@ -14,6 +14,7 @@ CREATE TABLE "PUBLIC"."account"(
     "debtBalance" DOUBLE,
     "name" VARCHAR_IGNORECASE(255),
     "isUserDefined" BOOLEAN,
+    "isCategoryAccount" BOOLEAN,
     "parentId" BIGINT
 );
 ALTER TABLE "PUBLIC"."account" ADD CONSTRAINT "PUBLIC"."CONSTRAINT_B" PRIMARY KEY("id");

@@ -34,7 +34,7 @@ public class JournalConsumer {
                                Session session) {
 
         for (JournalDetail detail : journalEntity.getJournalDetails()) {
-            long accountId = detail.getAccountId();
+            long accountId = detail.getAccount().getId();
             Account account = accountRepository.findById(accountId).get();
 
             account.setCreditBalance(account.getCreditBalance() + detail.getCredit());
