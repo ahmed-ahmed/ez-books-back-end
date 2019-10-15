@@ -1,5 +1,5 @@
 package io.ezbook.api.entity;
 
 public enum AccountType {
-    ASSET, LIABILITY, EQUITY
+    Assets, Liability, Equity, Income, Expense
 }
