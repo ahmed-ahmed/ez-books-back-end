@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -53,7 +54,11 @@ public class User implements java.io.Serializable {
 	}
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "user_sequence")
+	@SequenceGenerator(
+			name = "user_sequence",
+			sequenceName = "SYSTEM_SEQUENCE_5D6A6CED_114C_4C6D_ACA3_25CF7714F097"
+	)
 	@Column(name = "id", unique = true, nullable = false)
 	public long getId() {
 		return this.id;
