@@ -52,7 +52,7 @@ public class AccountControllerTest {
 		chartOfAccountList.add(childAccount);
 		
 		account = new Account();
-		account.setAccountType(AccountType.ASSET);
+		account.setAccountType(AccountType.Assets);
 		optionalAccount = Optional.of(account);
 	}
 	
@@ -85,7 +85,7 @@ public class AccountControllerTest {
 		ArgumentCaptor<Account> acInteger = ArgumentCaptor.forClass(Account.class);
 		verify(accountService).addAccount(acInteger.capture());
 		assertNotNull(result);
-		assertEquals(AccountType.ASSET, result.getAccountType());
+		assertEquals(AccountType.Assets, result.getAccountType());
 		
 	}
 }
