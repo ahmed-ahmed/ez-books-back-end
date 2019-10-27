@@ -15,6 +15,7 @@ CREATE TABLE "PUBLIC"."account"(
     "name" VARCHAR_IGNORECASE(255),
     "isUserDefined" BOOLEAN,
     "isCategoryAccount" BOOLEAN,
+    "description" VARCHAR_IGNORECASE(2000),
     "parentId" BIGINT
 );
 ALTER TABLE "PUBLIC"."account" ADD CONSTRAINT "PUBLIC"."CONSTRAINT_B" PRIMARY KEY("id");

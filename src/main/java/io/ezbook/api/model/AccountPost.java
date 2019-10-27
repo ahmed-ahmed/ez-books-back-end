@@ -8,6 +8,7 @@ import java.util.List;
 public class AccountPost {
     private String name;
     private long parentId;
+    private String description;
 
 //    private
 
@@ -33,5 +34,13 @@ public class AccountPost {
 
     public void setParentId(long parentId) {
         this.parentId = parentId;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

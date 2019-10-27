@@ -43,19 +43,19 @@ public class AccountController {
     }
 
     @PostMapping
-    public Account addAccount(@RequestBody AccountPost account) {
-        Optional<Account> parentAccount = accountService.findById(account.getParentId());
+    public Account addAccount(@RequestBody AccountPost input) {
+        Optional<Account> parentAccount = accountService.findById(input.getParentId());
 
-        Account account1 = new Account();
-        account1.setName(account.getName());
-        account1.setAccountType(parentAccount.get().getAccountType());
-        account1.setParentAccount(parentAccount.get());
-        account1.setUserDefined(true);
+        Account account = new Account();
+        account.setName(input.getName());
+        account.setAccountType(parentAccount.get().getAccountType());
+        account.setParentAccount(parentAccount.get());
+        account.setUserDefined(true);
+        account.setDescription(input.getDescription());
 
-        accountService.addAccount(account1);
+        accountService.addAccount(account);
 
-        return account1;
-//        return accountService.addAccount(account);
+        return account;
     }
 
 

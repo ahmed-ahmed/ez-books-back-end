@@ -33,16 +33,16 @@ public class AccountControllerTest {
 
 	@Mock
     private AccountService accountService;
-	
+
 	@InjectMocks
 	private AccountController accountController;
-	
+
 	private static Optional<Account> optionalAccount;
-	
+
 	private static List<ChartOfAccount> chartOfAccountList;
-	
+
 	private static Account account;
-	
+
 	@BeforeClass
 	public static void init() {
 		chartOfAccountList = new ArrayList<>();
@@ -50,12 +50,12 @@ public class AccountControllerTest {
 		ChartOfAccount childAccount = new ChartOfAccount(2L, "childAccount1", "parentAccount1");
 		chartOfAccountList.add(parentAccount);
 		chartOfAccountList.add(childAccount);
-		
+
 		account = new Account();
 		account.setAccountType(AccountType.Assets);
 		optionalAccount = Optional.of(account);
 	}
-	
+
 	@Before
 	public void setUp() throws Exception {
 		when(accountService.findLeafAccounts()).thenReturn(chartOfAccountList);
@@ -64,7 +64,7 @@ public class AccountControllerTest {
 
 	@After
 	public void tearDown() throws Exception {
-		
+
 	}
 
 	@Test
@@ -81,11 +81,11 @@ public class AccountControllerTest {
 		AccountPost testAccount = new AccountPost();
 		testAccount.setParentId(100L);
 		Account result = accountController.addAccount(testAccount);
-		
+
 		ArgumentCaptor<Account> acInteger = ArgumentCaptor.forClass(Account.class);
 		verify(accountService).addAccount(acInteger.capture());
 		assertNotNull(result);
 		assertEquals(AccountType.Assets, result.getAccountType());
-		
 	}
 }
+

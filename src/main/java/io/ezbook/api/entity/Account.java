@@ -33,6 +33,8 @@ public class Account implements java.io.Serializable {
 
 	private AccountType accountType;
 
+	private String description;
+
 	public Account() {
 	}
 
@@ -139,5 +141,14 @@ public class Account implements java.io.Serializable {
 
 	public void setAccountType(AccountType accountType) {
 		this.accountType = accountType;
+	}
+
+	@Column(name = "description")
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 }
