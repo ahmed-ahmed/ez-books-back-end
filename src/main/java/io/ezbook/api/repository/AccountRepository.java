@@ -14,7 +14,11 @@ public interface AccountRepository extends CrudRepository<Account, Long> {
     List<Account> findAccountByCategoryAccountIsTrue();
 
     @Query("select new io.ezbook.api.model.ChartOfAccount(id, name, parentAccount.name) from Account")
-    List<ChartOfAccount> getLeadAccounts();
+    List<ChartOfAccount> getLeafAccounts();
+
+    @Query("select new io.ezbook.api.model.ChartOfAccount(id, name, parentAccount.name) from Account where id= :id")
+    ChartOfAccount getLeafAccount(long id);
+
 
     @Query("select new io.ezbook.api.model.AccountBalance(j.account.id, j.account.name, sum(j.debt), sum(j.credit), j.account.accountType) " +
             "from JournalDetail j " +

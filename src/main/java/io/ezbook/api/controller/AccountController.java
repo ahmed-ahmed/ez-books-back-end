@@ -43,7 +43,7 @@ public class AccountController {
     }
 
     @PostMapping
-    public Account addAccount(@RequestBody AccountPost input) {
+    public ChartOfAccount addAccount(@RequestBody AccountPost input) {
         Optional<Account> parentAccount = accountService.findById(input.getParentId());
 
         Account account = new Account();
@@ -55,7 +55,7 @@ public class AccountController {
 
         accountService.addAccount(account);
 
-        return account;
+        return accountService.findLeafAccount(account.getId());
     }
 
 
