@@ -4,6 +4,8 @@ import java.util.List;
 
 import io.ezbook.api.entity.JournalEntity;
 import io.ezbook.api.model.Journal;
+import io.ezbook.api.model.MQMessage;
+import io.ezbook.api.util.TenantContext;
 import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.CrudRepository;
@@ -29,7 +31,11 @@ public class JournalService extends AbstractService<Journal> {
 
 	public JournalEntity addJournal(JournalEntity journalEntity) {
 		JournalEntity journalEntityResponse = journalRepository.save(journalEntity);
-		jmsTemplate.convertAndSend(JOURNAL_QUEUE, journalEntityResponse);
+		MQMessage mqMessage = new MQMessage();
+		String tenantId = TenantContext.getCurrentTenant();
+		mqMessage.setPayload(journalEntity);
+		mqMessage.setTenantId(tenantId);
+		jmsTemplate.convertAndSend(JOURNAL_QUEUE, mqMessage);
 		return journalEntityResponse;
 	}
 
