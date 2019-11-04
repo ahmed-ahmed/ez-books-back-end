@@ -2,6 +2,7 @@ package io.ezbook.api.controller;
 
 import io.ezbook.api.entity.Account;
 import io.ezbook.api.model.AccountBalance;
+import io.ezbook.api.model.TrialBalance;
 import io.ezbook.api.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -22,24 +23,24 @@ public class ReportController {
     @Autowired
     private AccountService accountService;
 
-    @GetMapping(path = "trialBalance")
-    public Map<String, Map<String, Set<Account>>> getTrialBalanaceReport() {
-
-        Map<String, Map<String, Set<Account>>> trialBalanceReport = new HashMap<>();
-        Map<String, Set<Account>> accountByCategoryMap = new HashMap<>();
-
-//		List<AccountType> accountTypes = accountService.findAllAccountTypes();
-
-//		for(AccountType type : accountTypes) {
-        accountByCategoryMap = new HashMap<>();
-//			for(AccountCategory category: type.getAccountCategorieses()) {
-//				accountByCategoryMap.put(category.getName(), category.getAccounts());
-//			}
-//			trialBalanceReport.put(type.getName(),  accountByCategoryMap);
-//		}
-        return trialBalanceReport;
-
-    }
+//    @GetMapping(path = "trialBalance")
+//    public Map<String, Map<String, Set<Account>>> getTrialBalanaceReport() {
+//
+//        Map<String, Map<String, Set<Account>>> trialBalanceReport = new HashMap<>();
+//        Map<String, Set<Account>> accountByCategoryMap = new HashMap<>();
+//
+////		List<AccountType> accountTypes = accountService.findAllAccountTypes();
+//
+////		for(AccountType type : accountTypes) {
+//        accountByCategoryMap = new HashMap<>();
+////			for(AccountCategory category: type.getAccountCategorieses()) {
+////				accountByCategoryMap.put(category.getName(), category.getAccounts());
+////			}
+////			trialBalanceReport.put(type.getName(),  accountByCategoryMap);
+////		}
+//        return trialBalanceReport;
+//
+//    }
 
     @GetMapping(path = "balanceSheet")
     public Map<String, Map<String, Set<Account>>> getBalanaceSheetReport() {
@@ -54,10 +55,16 @@ public class ReportController {
 //			for(AccountCategory category: type.getAccountCategorieses()) {
 ////				accountByCategoryMap.put(category.getName(), category.getAccounts());
 //			}
-//			balanceSheetReport.put(type.getName(),  accountByCategoryMap);
+//			balanceSheetReport.put(typ  e.getName(),  accountByCategoryMap);
 //		}
         return balanceSheetReport;
     }
+
+    @GetMapping(path = "trialBalance")
+    public List<TrialBalance> getTrialBalance() {
+        return accountService.getTrialBalances();
+    }
+
 
     @GetMapping(path = "accountBalances")
     public List<AccountBalance> getGeneralLedgerReport() {

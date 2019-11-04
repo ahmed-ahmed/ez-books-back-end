@@ -11,7 +11,7 @@ public class AccountBalance {
 
     private final AccountType accountType;
 
-    public AccountBalance(long id, String name, double creditBalance, double debtBalance, AccountType accountType) {
+    public AccountBalance(long id, String name, double debtBalance, double creditBalance, AccountType accountType) {
         this.id = id;
         this.name = name;
         this.creditBalance = creditBalance;
