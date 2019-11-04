@@ -4,8 +4,6 @@ import static io.ezbook.api.configuration.ActiveMQConfig.JOURNAL_QUEUE;
 
 import javax.jms.Session;
 
-import io.ezbook.api.model.MQMessage;
-import io.ezbook.api.util.TenantContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.annotation.JmsListener;
 import org.springframework.messaging.Message;
@@ -32,12 +30,8 @@ public class JournalConsumer {
 
 
     @JmsListener(destination = JOURNAL_QUEUE)
-    public void receiveMessage(@Payload MQMessage mqMessage, @Headers MessageHeaders headers, Message<?> message,
+    public void receiveMessage(@Payload JournalEntity journalEntity, @Headers MessageHeaders headers, Message<?> message,
                                Session session) {
-        String tenantId = mqMessage.getTenantId();
-        TenantContext.setCurrentTenant(tenantId);
-
-        JournalEntity journalEntity = mqMessage.getPayload();
 
         for (JournalDetail detail : journalEntity.getJournalDetails()) {
             long accountId = detail.getAccount().getId();

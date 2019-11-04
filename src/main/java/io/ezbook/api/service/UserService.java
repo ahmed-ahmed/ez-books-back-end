@@ -26,9 +26,6 @@ public class UserService {
 	@Autowired
 	private RoleRepository roleRepository;
 
-	@Autowired
-	private TenantService tenantService;
-
 	private PasswordEncoder encoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
 
 
@@ -54,7 +51,6 @@ public class UserService {
         entity.setTenantId(tenantId);
         entity.setRoles(Arrays.asList(roleRepository.findByRoleName(SecurityConstants.STANDARD_ROLE)));
         User saved = userRepository.save(entity);
-        tenantService.initDatabase(tenantId);
         return saved;
     }
 }
