@@ -24,7 +24,7 @@ pipeline {
         sh '''cd /opt/deploy/back-end
 		sudo rm -rf **.** *
 		sudo cp  /var/lib/jenkins/workspace/ez-books-back-end_master/target/*.jar .
-		java -jar java -jar `ls -p api*.jar| grep -v /` '''
+		java -jar `ls -p api*.jar| grep -v /` '''
       }
     }
 
