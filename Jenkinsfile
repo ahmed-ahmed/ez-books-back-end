@@ -24,7 +24,7 @@ pipeline {
         sh '''cd /opt/deploy/back-end
 		sudo rm -rf **.** *
 		sudo cp  /var/lib/jenkins/workspace/ez-books-back-end_master/target/*.jar .
-		kill -9 ps aux | grep java | grep api | awk \'{print $2}\' | xargs kill
+		ps aux | grep java | grep api | awk \'{print $2}\' | xargs kill
 		java -jar `ls -p api*.jar| grep -v /` &
 		'''
       }
