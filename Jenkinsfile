@@ -1,10 +1,10 @@
-def mvnHome
-mvnHome = tool 'apache-maven-3.6.2'
-env.JAVA_HOME = tool 'jdk9.0.4'
-
 pipeline {
   agent any
-  
+  environment {
+ 		VERSION = sh(returnStdout: true, script: 'git describe --tags')
+  		mvnHome = tool 'apache-maven-3.6.2'
+        JAVA_HOME = tool 'jdk9.0.4'
+  }
   stages {
     stage('Build') {
      steps {
