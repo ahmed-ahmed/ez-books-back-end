@@ -42,6 +42,8 @@ public class AccountControllerTest {
 	private static List<ChartOfAccount> chartOfAccountList;
 
 	private static Account account;
+	
+	private static ChartOfAccount chartOfAccount;
 
 	@BeforeClass
 	public static void init() {
@@ -50,8 +52,11 @@ public class AccountControllerTest {
 		ChartOfAccount childAccount = new ChartOfAccount(2L, "childAccount1", "parentAccount1");
 		chartOfAccountList.add(parentAccount);
 		chartOfAccountList.add(childAccount);
+		
 
+		chartOfAccount = childAccount;
 		account = new Account();
+		account.setId(1000L);
 		account.setAccountType(AccountType.Assets);
 		optionalAccount = Optional.of(account);
 	}
@@ -60,6 +65,8 @@ public class AccountControllerTest {
 	public void setUp() throws Exception {
 		when(accountService.findLeafAccounts()).thenReturn(chartOfAccountList);
 		when(accountService.findById(Mockito.anyLong())).thenReturn(optionalAccount);
+		when(accountService.addAccount(Mockito.any(Account.class))).thenReturn(account);
+		when(accountService.findLeafAccount(Mockito.anyLong())).thenReturn(chartOfAccount);
 	}
 
 	@After
@@ -85,7 +92,7 @@ public class AccountControllerTest {
 		ArgumentCaptor<Account> acInteger = ArgumentCaptor.forClass(Account.class);
 		verify(accountService).addAccount(acInteger.capture());
 		assertNotNull(result);
-//		assertEquals(AccountType.Assets, result.getAccountType());
+		assertEquals(2, result.getId());
 	}
 }
 
