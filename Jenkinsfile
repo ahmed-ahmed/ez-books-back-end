@@ -22,7 +22,7 @@ pipeline {
     }
     stage('deploy') {
       steps {
-        sh 'docker run -d -p 8000:8090 ezbook-back-end'
+        sh 'docker run -d -p 8090:8000 ezbook-back-end'
       }
     }
 
