@@ -12,7 +12,7 @@ pipeline {
 		      script{
 		         if (isUnix()) {
 		            sh '"$MVN_HOME/bin/mvn" -Dmaven.test.failure.ignore clean install'
-		            sh 'docker build -t apache-back-end .'
+		            sh 'docker build -t ezbook-back-end .'
 		         } else {
 		            bat(/"%MVN_HOME%\bin\mvn" -Dmaven.test.failure.ignore clean install/)
 		         }
@@ -22,7 +22,7 @@ pipeline {
     }
     stage('deploy') {
       steps {
-        sh 'docker run -d -p 8000:8000 apache-back-end'
+        sh 'docker run -d -p 8000:8090 ezbook-back-end'
       }
     }
 
