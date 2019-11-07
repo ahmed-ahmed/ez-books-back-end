@@ -24,8 +24,8 @@ pipeline {
         sh '''cd /opt/deploy/back-end
 		sudo rm -rf **.** *
 		sudo cp  /var/lib/jenkins/workspace/ez-books-back-end_master/target/*.jar .
-		ps aux | grep java | grep api | awk \'{print $2}\' | xargs kill > /dev/null 2> /dev/null
-		java -jar `ls -p api*.jar| grep -v /` &
+		sh "pid=\$(lsof -i:8000 -t); kill -TERM \$pid || kill -KILL \$pid"
+		nohup java -jar `ls -p api*.jar| grep -v /` -Dserver.port=8000 &
 		'''
       }
     }
