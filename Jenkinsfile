@@ -3,9 +3,7 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        sh '''export JAVA_HOME=/usr/lib/jvm/openjdk-11
-'''
-        sh 'mvn clean install'
+        sh 'JAVA_HOME=/usr/lib/jvm/openjdk-11;mvn clean install'
         sh 'docker build -t ezbook-back-end .'
       }
     }
