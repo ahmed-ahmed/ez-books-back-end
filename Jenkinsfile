@@ -20,6 +20,6 @@ pipeline {
   }
   environment {
     mvnHome = 'apache-maven-3.6.2'
-    JAVA_HOME = 'jdk9.0.4'
+    JAVA_HOME = '/usr/lib/jvm/openjdk-11'
   }
 }
