@@ -3,18 +3,8 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        withEnv(overrides: ["MVN_HOME=$mvnHome"]) {
-          script {
-            if (isUnix()) {
-              sh '"$MVN_HOME/bin/mvn" -Dmaven.test.failure.ignore clean install'
-              sh 'docker build -t ezbook-back-end .'
-            } else {
-              bat(/"%MVN_HOME%\bin\mvn" -Dmaven.test.failure.ignore clean install/)
-            }
-          }
-
-        }
-
+        sh 'mvn clean install'
+        sh 'docker build -t ezbook-back-end .'
       }
     }
 
