@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        sh 'JAVA_HOME=/usr/lib/jvm/openjdk-11;mvn clean install'
+        sh 'mvn clean install'
         sh 'docker build -t ezbook-back-end .'
       }
     }
@@ -18,6 +18,6 @@ pipeline {
   }
   environment {
     mvnHome = 'apache-maven-3.6.2'
-    JAVA_HOME = '/usr/lib/jvm/openjdk-11'
+    JAVA_HOME = '/usr/lib/jvm/java-1.11.0-openjdk-amd64'
   }
 }
