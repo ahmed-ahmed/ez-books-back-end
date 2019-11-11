@@ -21,7 +21,7 @@ pipeline {
     stage('deploy') {
       steps {
         sh 'docker rm -f backend || true '
-        sh 'docker run -d -p 8090:8000 -t backend ezbook-back-end'
+        sh 'docker run -d -p 8090:8000 --name backend ezbook-back-end'
       }
     }
 
